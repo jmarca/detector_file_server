@@ -27,7 +27,7 @@ var server = connect.createServer(
     ,jsonp()
     //,cas_validate.validate({})
     ,callback_stripper()   // have to strip the callback param for caching
-    ,connect.router(listfiles)
+    ,connect.router(rfiles)
 
     ,connect.errorHandler({ dumpExceptions: true, showStack: true })
 );
@@ -35,7 +35,7 @@ var server = connect.createServer(
 
 
 server.listen(3000);
-console.log('Connect server listening on port 3000');
+console.log('Connect server listening on port 3000, working on '+__dirname+ ' but of course, there is always the fact that '+process.cwd());
 // //server.listen(3000);
 // console.log('Current gid: ' + process.getgid());
 // try {
@@ -57,12 +57,19 @@ console.log('Connect server listening on port 3000');
 // }
 
 function rfiles(app) {
-    app.get('/pemsdata/*RData'
-            ,connect.static(__dirname+"/public/pems")
-           );
-    app.get('/wimdata/*RData'
-            ,connect.static(__dirname+"/public/wim")
-           );
+  app.get('/vdsdata/*RData'
+  ,connect.static(process.cwd()+"/public/pems/breakup")
+         );
+  app.get('/wimdata/*RData'
+  ,connect.static(process.cwd()+"/public/wim")
+         );
+  //query filesystem
+  app.get('/vdsdata/:district/:freeway?'
+  ,listing_service({'root': process.cwd()+"/public/pems/breakup"})
+         );
+  app.get('/wimdata'
+  ,listing_service({'root': process.cwd()+"/public/wim"})
+         );
 }
 
 // query couchdb
@@ -76,12 +83,4 @@ function vdsid_listing(app) {
                                      )
          );
 }
-
-//query filesystem
-function listfiles(app){
-  app.get('/pemsrfiles/:district/:freeway?'
-//  ,listing_service({'root': __dirname+"/public/pems/breakup"}));
-  ,listing_service({'root': __dirname+"/public"}));
-}
-
 
