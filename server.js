@@ -13,7 +13,7 @@ var callback_stripper = require('callback_stripper');
 var cas_validate = require('cas_validate');
 
 // for context
-var RedisStore = require('connect-redis');
+var RedisStore = require('connect-redis')(connect);
 
 var listing_service = require('./lib/listing_service');
 
