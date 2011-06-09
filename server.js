@@ -32,8 +32,8 @@ var server = connect.createServer(
 
 
 
-server.listen(80);
-console.log('Connect server listening on port 80 on service /geojson');
+server.listen(3000);
+console.log('Connect server listening on port 3000');
 //server.listen(3000);
 console.log('Current gid: ' + process.getgid());
 try {
@@ -54,12 +54,16 @@ catch (err) {
     throw(err);
 }
 
-function css(app) {
-    app.get('/css/*'
-            ,connect.static(__dirname+"/public")
+function rfiles(app) {
+    app.get('/pemsdata/*RData'
+            ,connect.static(__dirname+"/public/pems")
+           );
+    app.get('/wimdata/*RData'
+            ,connect.static(__dirname+"/public/wim")
            );
 }
 
+// query couchdb
 function vdsid_listing(app) {
 
     app.get('/vdsid',vdsid_info_service({'db':'vds'
@@ -69,4 +73,13 @@ function vdsid_listing(app) {
                                         }
                                        )
            );
+
+//query filesystem
+function listfiles(app){
+    app.get('/pemsrfiles/:district/:freeway?'
+             ,listing_service({
+                 'root': __dirname+"/public/pems/breakup"
+             }));
+}
+
 
