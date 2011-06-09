@@ -60,4 +60,13 @@ function css(app) {
            );
 }
 
+function vdsid_listing(app) {
+
+    app.get('/vdsid',vdsid_info_service({'db':'vds'
+                                         ,'user':cuser
+                                         ,'pass':cpass
+				         ,'host':chost
+                                        }
+                                       )
+           );
 
