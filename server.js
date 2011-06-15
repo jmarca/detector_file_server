@@ -64,7 +64,7 @@ server.on('error',function(e){
     }
     console.log('file transfer choked on bad file descriptor');
     console.log(JSON.stringify(e));
-}
+});
 
 function rfiles(app) {
   app.get('/vdsdata/*RData'
