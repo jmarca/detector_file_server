@@ -56,6 +56,16 @@ console.log('Connect server listening on port 3000, working on '+__dirname+ ' bu
 //     throw(err);
 // }
 
+server.on('error',function(e){
+    // this handler exists purely to swallow bad file descriptor errors
+    if (e.errno != EBADF) {
+        // rethrow exception
+        throw e;
+    }
+    console.log('file transfer choked on bad file descriptor');
+    console.log(JSON.stringify(e));
+}
+
 function rfiles(app) {
   app.get('/vdsdata/*RData'
   ,connect.static(process.cwd()+"/public/pems/breakup")
