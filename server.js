@@ -6,11 +6,6 @@ var cuser = process.env.COUCHDB_USER ;
 var cpass = process.env.COUCHDB_PASS ;
 var chost = process.env.COUCHDB_HOST ;
 var connect = require('connect');
-var jsonp = require('connect-jsonp');
-
-// for user validation
-var callback_stripper = require('callback_stripper');
-var cas_validate = require('cas_validate');
 
 // for context
 var RedisStore = require('connect-redis')(connect);
@@ -24,9 +19,6 @@ var server = connect.createServer(
     ,connect.cookieParser()
     ,connect.session({ store: new RedisStore   //RedisStore or MemoryStore
                        , secret: '234kl 0aeyn9' })
-    ,jsonp()
-    //,cas_validate.validate({})
-    ,callback_stripper()   // have to strip the callback param for caching
     ,connect.router(rfiles)
 
     ,connect.errorHandler({ dumpExceptions: true, showStack: true })
@@ -56,16 +48,6 @@ console.log('Connect server listening on port 3000, working on '+__dirname+ ' bu
 //     throw(err);
 // }
 
-server.on('error',function(e){
-    // this handler exists purely to swallow bad file descriptor errors
-    if (e.errno != EBADF) {
-        // rethrow exception
-        throw e;
-    }
-    console.log('file transfer choked on bad file descriptor');
-    console.log(JSON.stringify(e));
-});
-
 function rfiles(app) {
   app.get('/vdsdata/*RData'
   ,connect.static(process.cwd()+"/public/pems/breakup")
@@ -82,15 +64,4 @@ function rfiles(app) {
          );
 }
 
-// query couchdb
-function vdsid_listing(app) {
-
-  app.get('/vdsid',vdsid_info_service({'db':'vds'
-                                     ,'user':cuser
-                                     ,'pass':cpass
-				     ,'host':chost
-                                      }
-                                     )
-         );
-}
 
