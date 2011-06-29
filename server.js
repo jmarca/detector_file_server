@@ -20,6 +20,7 @@ var server = connect.createServer(
     ,connect.session({ store: new RedisStore   //RedisStore or MemoryStore
                        , secret: '234kl 0aeyn9' })
     ,connect.router(rfiles)
+    ,connect.router(qfiles)
 
     ,connect.errorHandler({ dumpExceptions: true, showStack: true })
 );
@@ -48,6 +49,16 @@ console.log('Connect server listening on port 3000, working on '+__dirname+ ' bu
 //     throw(err);
 // }
 
+function dumperror(err){
+    if (err){
+	console.log("caught a fail");
+	console.log(JSON.stringify(err));
+	next(err);
+    }
+    next()
+}
+
+
 function rfiles(app) {
   app.get('/vdsdata/*RData'
   ,connect.static(process.cwd()+"/public/pems/breakup")
@@ -55,6 +66,9 @@ function rfiles(app) {
   app.get('/wimdata/*RData'
   ,connect.static(process.cwd()+"/public/wim")
          );
+}
+
+function qfiles(app) {
   //query filesystem
   app.get('/vdsdata/:district/:freeway?'
   ,listing_service({'root': process.cwd()+"/public/pems/breakup"})
