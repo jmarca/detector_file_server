@@ -61,20 +61,20 @@ function dumperror(err){
 
 function rfiles(app) {
   app.get('/vdsdata/*RData'
-  ,connect.static(process.cwd()+"/public/pems/breakup")
+  ,connect.static(process.cwd()+"/public/pems/vdsdata")
          );
   app.get('/wimdata/*RData'
-  ,connect.static(process.cwd()+"/public/wim")
+  ,connect.static(process.cwd()+"/public/wim/wimdata")
          );
 }
 
 function qfiles(app) {
   //query filesystem
   app.get('/vdsdata/:district/:freeway?'
-  ,listing_service({'root': process.cwd()+"/public/pems/breakup"})
+  ,listing_service({'root': process.cwd()+"/public/pems/vdsdata"})
          );
   app.get('/wimdata'
-  ,listing_service({'root': process.cwd()+"/public/wim"})
+  ,listing_service({'root': process.cwd()+"/public/wim/wimdata"})
          );
 }
 
