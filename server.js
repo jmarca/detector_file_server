@@ -61,10 +61,10 @@ function dumperror(err){
 
 function rfiles(app) {
   app.get('/vdsdata/*RData'
-  ,connect.static(process.cwd()+"/public/pems/vdsdata")
+  ,connect.static(process.cwd()+"/public/pems")
          );
   app.get('/wimdata/*RData'
-  ,connect.static(process.cwd()+"/public/wim/wimdata")
+  ,connect.static(process.cwd()+"/public/wim")
          );
 }
 
