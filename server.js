@@ -60,13 +60,19 @@ function dumperror(err){
 
 
 function rfiles(app) {
-  app.get('/vdsdata/*RData'
-  ,connect.static(process.cwd()+"/public/pems")
-         );
-  app.get('/wimdata/*RData'
-  ,connect.static(process.cwd()+"/public/wim")
-         );
+    app.get('/vdsdata/*RData'
+            ,connect.static(process.cwd()+"/public/pems")
+           );
+
+
+    app.get('/wimdata/*RData'
+            ,connect.static(process.cwd()+"/public/wim")
+           );
+    app.put('/wimdata/:year/:wimid/:file.RData'
+            ,put_service({'root': process.cwd()+"/public/wim/wimdata/"})
+           );
 }
+
 
 function qfiles(app) {
   //query filesystem

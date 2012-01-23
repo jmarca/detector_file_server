@@ -10,6 +10,10 @@
   "engines": {
     "node": ">0.6"
   },
-  "dependencies": {},
+  "dependencies": {
+        "request": "*",
+        "filed": "*",
+        "connect":"*"
+  },
   "devDependencies": {}
 }
