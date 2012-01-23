@@ -11,7 +11,8 @@ var connect = require('connect');
 var RedisStore = require('connect-redis')(connect);
 
 var listing_service = require('./lib/listing_service');
-var put_service = require('./lib/put_service');
+var put_service = require('./lib/put_service').put_service;
+var check_service = require('./lib/put_service').check_service;
 
 var server = connect.createServer(
     connect.logger()
@@ -70,6 +71,7 @@ function rfiles(app) {
             ,connect.static(process.cwd()+"/public/wim")
            );
     app.put('/wimdata/:year/:wimid/:file.RData'
+//            ,check_service({'root': process.cwd()+"/public/wim/wimdata/"})
             ,put_service({'root': process.cwd()+"/public/wim/wimdata/"})
            );
 }
@@ -80,8 +82,10 @@ function qfiles(app) {
   app.get('/vdsdata/:district/:freeway?'
   ,listing_service({'root': process.cwd()+"/public/pems/vdsdata/"})
          );
-  app.get('/wimdata'
-  ,listing_service({'root': process.cwd()+"/public/wim/wimdata/"})
+  app.get('/wimdata/:year?/:site?'
+  ,listing_service({'root': process.cwd()+"/public/wim/wimdata/"
+                    ,'params':['year','site']
+                    })
          );
 }
 
