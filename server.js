@@ -11,6 +11,7 @@ var connect = require('connect');
 var RedisStore = require('connect-redis')(connect);
 
 var listing_service = require('./lib/listing_service');
+var put_service = require('./lib/put_service');
 
 var server = connect.createServer(
     connect.logger()
