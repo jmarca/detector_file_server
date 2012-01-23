@@ -1,0 +1,15 @@
+{
+  "author": "James E. Marca <jmarca@translab.its.uci.edu>",
+  "name": "fileserver",
+  "description": "My small file server for VDS files",
+  "version": "0.0.1",
+  "homepage": "http://www.ctmlabs.net",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": ">0.6"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
