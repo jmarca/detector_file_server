@@ -71,10 +71,10 @@ function rfiles(app) {
 function qfiles(app) {
   //query filesystem
   app.get('/vdsdata/:district/:freeway?'
-  ,listing_service({'root': process.cwd()+"/public/pems/vdsdata"})
+  ,listing_service({'root': process.cwd()+"/public/pems/vdsdata/"})
          );
   app.get('/wimdata'
-  ,listing_service({'root': process.cwd()+"/public/wim/wimdata"})
+  ,listing_service({'root': process.cwd()+"/public/wim/wimdata/"})
          );
 }
 
