@@ -2,13 +2,13 @@
   "author": "James E. Marca <jmarca@translab.its.uci.edu>",
   "name": "detector_file_server",
   "description": "My small file server for detector files",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://www.ctmlabs.net",
   "repository": {
     "url": ""
   },
   "engines": {
-    "node": ">0.6"
+    "node": ">0.8"
   },
   "dependencies": {
         "express": "~3.0.0rc4",
@@ -20,8 +20,8 @@
     "devDependencies": {
         "async":"",
         "jsdom":"",
-        "should": "~1.2.0",
-        "superagent": "~0.9.5",
+        "should": "",
+        "superagent": "",
         "lodash":""
     },
     "scripts": {
