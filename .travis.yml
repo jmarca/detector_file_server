@@ -3,3 +3,16 @@ node_js:
   - "node"
   - "10"
   - "8"
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=392d47e5a2426287d91111228cb7de73fcae36419d9580c442740a5d98627340
+
+before_script:
+  # download code climate reporter
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  - ./node_modules/.bin/tap --coverage-report=lcov &&  ./cc-test-reporter after-build  -t lcov --exit-code $TRAVIS_TEST_RESULT
