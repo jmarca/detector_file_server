@@ -1,32 +1,32 @@
 {
-  "author": "James E. Marca <jmarca@translab.its.uci.edu>",
-  "name": "detector_file_server",
-  "description": "My small file server for detector files",
-  "version": "0.0.2",
-  "homepage": "http://www.ctmlabs.net",
-  "repository": {
-    "url": ""
-  },
-  "engines": {
-    "node": ">0.8"
-  },
-  "dependencies": {
-        "express": "~3.0.0rc4",
-      "makedir":"*",
-      "glob":"",
-        "request": "*",
-        "filed": "*"
-  },
+    "author": "James E. Marca <james@activimetrics.com>",
+    "name": "detector_file_server",
+    "description": "My small file server for detector files",
+    "version": "0.0.3",
+    "homepage": "https://github.com/jmarca/detector_file_server",
+    "repository": {
+        "url": ""
+    },
+    "engines": {
+        "node": ">8.0"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "filed": "^0.2.1",
+        "glob": "^7.1.4",
+        "graceful-fs": "^4.2.0",
+        "makedir": "0.0.11",
+        "request": "^2.88.0"
+    },
     "devDependencies": {
-        "async":"",
-        "jsdom":"",
-        "should": "",
-        "superagent": "",
-        "lodash":""
+        "jsdom": "^15.1.1",
+        "lodash": "^4.17.14",
+        "superagent": "^5.1.0",
+        "tap": "^14.4.1"
     },
     "scripts": {
-        "test": "mocha"
+        "test": "tap test/**/test*.js --cov",
+        "posttest": "tap --coverage-report=lcov"
     },
-       "main": "index.js"
-
+    "main": "index.js"
 }
