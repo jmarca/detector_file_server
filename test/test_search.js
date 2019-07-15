@@ -65,7 +65,7 @@ function setup_server( c ){
 
 function tear_down(){
     fs.unlinkSync(path.join(__dirname, 'test.RData'))
-    //fs.unlinkSync(path.join(__dirname, 'test.wim.RData'))
+    fs.unlinkSync(path.join(__dirname, 'test.wim.RData'))
     return new Promise((resolve,reject)=>{
         //console.log('server stopped')
         server.close(resolve,reject)
