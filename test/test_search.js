@@ -9,9 +9,6 @@ const path = require('path')
 const superagent = require('superagent')
 
 const express = require('express')
-const jsdom = require('jsdom')
-
-const http = require('http')
 
 const listing_service = require('../.').listing_service;
 const rfiles = listing_service.rfiles
