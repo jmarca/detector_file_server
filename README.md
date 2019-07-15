@@ -3,6 +3,8 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/jmarca/detector_file_server.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/jmarca/detector_file_server.svg?branch=master)](https://travis-ci.org/jmarca/detector_file_server)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7161f79c022250227a9d/maintainability)](https://codeclimate.com/github/jmarca/detector_file_server/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7161f79c022250227a9d/test_coverage)](https://codeclimate.com/github/jmarca/detector_file_server/test_coverage)
 
 
 Routes and server code for serving up detector files---the RData and
