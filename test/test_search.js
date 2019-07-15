@@ -283,7 +283,7 @@ async function rfiles_test(t){
 
                         var rdataWrite = fs.createWriteStream(path.join(__dirname, 'test.RData'))
                         rdataWrite.on('close', function () {
-                            console.log('calling stream close')
+                            //console.log('calling stream close')
                             ttt.same(fs.readFileSync(path.join(__dirname
                                                                ,'public/pems/breakup/d12/405'
                                                                , c[0]))
@@ -291,9 +291,6 @@ async function rfiles_test(t){
                             ttt.end()
                             return resolve()
 
-                        })
-                        rdataWrite.on('finish', () => {
-                            console.log('All writes are now complete.');
                         })
                         superagent
                             .get(server_host+'/vdsdata/d12/405/'+c[0])
@@ -317,7 +314,7 @@ async function rfiles_test(t){
                     return new Promise((resolve,reject)=>{
                         var rdataWrite = fs.createWriteStream(path.join(__dirname, 'test.wim.RData'))
                         rdataWrite.on('close', function () {
-                            console.log('calling stream close')
+                            //console.log('calling stream close')
                             ttt.same(fs.readFileSync(
                                 path.join(
                                     __dirname
@@ -330,9 +327,6 @@ async function rfiles_test(t){
                             return resolve()
                         })
 
-                        rdataWrite.on('finish', () => {
-                            console.log('All writes are now complete.');
-                        })
                         superagent
                             .get(server_host+'/wimdata/2008/10/'+c[0])
                             .pipe(rdataWrite)

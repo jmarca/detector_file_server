@@ -5,18 +5,16 @@
     "version": "0.0.3",
     "homepage": "https://github.com/jmarca/detector_file_server",
     "repository": {
-        "url": ""
+        "url": "https://github.com/jmarca/detector_file_server"
     },
     "engines": {
         "node": ">8.0"
     },
     "dependencies": {
         "express": "^4.17.1",
-        "filed": "^0.2.1",
         "glob": "^7.1.4",
         "graceful-fs": "^4.2.0",
-        "makedir": "0.0.11",
-        "request": "^2.88.0"
+        "makedir": "0.0.11"
     },
     "devDependencies": {
         "jsdom": "^15.1.1",
