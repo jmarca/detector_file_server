@@ -12,13 +12,13 @@
     },
     "dependencies": {
         "express": "^4.17.1",
-        "glob": "^7.1.4",
+        "glob": "^7.1.6",
         "makedir": "0.0.11"
     },
     "devDependencies": {
-        "graceful-fs": "^4.2.0",
-        "superagent": "^5.1.0",
-        "tap": "^14.10.6"
+        "graceful-fs": "^4.2.3",
+        "superagent": "^5.2.2",
+        "tap": "^14.10.7"
     },
     "scripts": {
         "test": "tap test/**/test*.js --cov",
