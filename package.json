@@ -12,7 +12,7 @@
     },
     "dependencies": {
         "express": "^4.17.1",
-        "glob": "^7.1.6",
+        "glob": "^7.1.7",
         "makedir": "0.0.11"
     },
     "devDependencies": {
